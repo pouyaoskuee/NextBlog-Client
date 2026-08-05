@@ -31,6 +31,9 @@
     --color-red-500: rgb(239, 68, 68);
     --color-red-300: rgb(252, 165, 165);
 
+
+    --font-vazir:'vazir';
+
 }
 
 @variant dark {
@@ -49,3 +52,6 @@
     --backdrop-color: rgb(0, 0, 0);
 }
 
+body{
+    font-family: var(--font-vazir) , 'sans-serif';
+}

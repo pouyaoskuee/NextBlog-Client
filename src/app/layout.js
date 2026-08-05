@@ -1,4 +1,5 @@
-import "./globals.css";
+import "@/styles/globals.css"
+import vazirFont from "@/constants/localFont";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +12,7 @@ export default function RootLayout({ children }) {
       lang="fa" dir={'rtl'}
       className={`h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className={` ${vazirFont.variable} font-sans min-h-full flex flex-col`}>{children}</body>
     </html>
   );
 }

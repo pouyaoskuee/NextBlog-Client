@@ -8,11 +8,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="fa" dir={'rtl'}
-      className={`h-full antialiased dark`}
-    >
-      <body className={` ${vazirFont.variable} font-sans min-h-full flex flex-col`}>{children}</body>
+    <html lang="fa" dir={'rtl'}>
+      <body className={` ${vazirFont.variable} font-sans`}>{children}</body>
     </html>
   );
 }

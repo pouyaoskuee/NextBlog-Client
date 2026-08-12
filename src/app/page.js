@@ -1,10 +1,15 @@
 import Button from "@/ui/Button";
 import Header from "@/components/Header";
+import React from "react";
+
+export const metadata = {
+    title: "Home | next Blog",
+    description:'its home page of blog application with next.js',
+}
 
 export default function Home() {
     return (
         <div>
-            <Header/>
             <main className={'flex flex-col items-center justify-center gap-10'}>
                 <h1>اپلکیشن مدیریت بلاگ</h1>
                 <div className={'space-y-1'}>

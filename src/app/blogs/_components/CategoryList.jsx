@@ -1,6 +1,7 @@
 import CustomLink from "@/ui/CustomLink";
 
-async function Categories() {
+async function CategoryList() {
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/category/list`);
     const {data: {categories}} = await result.json();
 
@@ -10,12 +11,11 @@ async function Categories() {
             {categories.map(category => (
                 <CategoriesList key={category._id} href={`/${category.slug}`}>{category.title}</CategoriesList>
             ))}
-
         </ul>
     );
 }
 
-export default Categories;
+export default CategoryList;
 
 function CategoriesList ({href , children}) {
     return (

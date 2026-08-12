@@ -7,7 +7,7 @@ function CustomLink({href , children }) {
     const path =  usePathname()
 
     return (
-        <Link href={href} className={`${path===href&&'text-primary-900'}  `}>
+        <Link href={href} className={`${path===href&&'text-primary-800'}  `}>
             {children}
         </Link>
     );

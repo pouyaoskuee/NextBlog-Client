@@ -1,9 +1,9 @@
 import PostCard from "@/app/blogs/_components/PostCard";
+import {getAllPosts} from "@/services/postSevices";
 
 async function PostsList() {
 
-    const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list`);
-    const {data: {posts}} = await result.json();
+    const posts = await getAllPosts()
 
     return (
         <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'}>

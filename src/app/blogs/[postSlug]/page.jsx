@@ -1,21 +1,41 @@
 import Image from "next/image";
+import notFound from "@/app/blogs/[postSlug]/not-found";
+import {getAllPosts, getPost} from "@/services/postSevices";
+
+
+
+export async function generateStaticParams(){
+    const posts = await getAllPosts();
+    return posts.slice(0,4).map(item => {
+        return {postSlug: item.slug};
+    })
+}
+
+
+export async function generateMetadata({params}) {
+    const param = await params;
+    const post = await getPost(param)
+
+    return {
+        title: `${post?.title}`,
+    }
+}
 
 async function Page({ params }) {
 
     const param = await params;
 
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/post/slug/${param.postSlug}`
-    );
+    const post = await getPost(param)
 
-    const { data: { post } } = await res.json();
+
+    if (!post) return notFound();
 
     return(
         <div className={'space-y-6 px-4'}>
             <h1>{post.title}</h1>
             <div className={'text-left space-y-2'}>
                 <p>دسته بندی: {post.briefText} </p>
-                <p>نویسنده: {post.author.name} </p>
+                <p>نویسنده: {post.author?.name} </p>
             </div>
 
             <div className={'relative aspect-3/1 '}>

@@ -1,7 +1,6 @@
 import CustomLink from "@/ui/CustomLink";
 
 async function CategoryList() {
-    await new Promise(resolve => setTimeout(resolve, 1000));
     const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/category/list`);
     const {data: {categories}} = await result.json();
 

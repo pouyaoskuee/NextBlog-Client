@@ -1,11 +1,11 @@
 import {Suspense} from "react";
 import PostsList from "@/app/blogs/_components/PostsList";
-import Loading from "@/app/blogs/Loading";
+import Loading from "@/app/blogs/loading";
 
 async function page() {
     return (
         <div>
-            <h2>لیست پست ها</h2>
+            <h2 className={'mb-4'}>لیست پست ها</h2>
             <Suspense fallback={<Loading />}>
                 <PostsList/>
             </Suspense>

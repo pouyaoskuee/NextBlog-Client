@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    logging:{
+        fetches:{
+            fullUrl:true,
+        }
+    },
+    allowedDevOrigins: ['192.168.100.217'],
     images: {
         dangerouslyAllowLocalIP: true,
         remotePatterns: [

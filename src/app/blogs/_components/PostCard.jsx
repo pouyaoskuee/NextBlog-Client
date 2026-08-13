@@ -1,5 +1,4 @@
 import Image from "next/image";
-import CustomLink from "@/ui/CustomLink";
 import Link from "next/link";
 import Avatar from "@/app/blogs/_components/Avatar";
 import {ClockIcon} from "@heroicons/react/24/outline";

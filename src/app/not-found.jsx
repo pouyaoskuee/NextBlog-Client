@@ -1,5 +1,4 @@
 'use client'
-import React from 'react';
 import {ArrowRightIcon} from "@heroicons/react/16/solid";
 import {useMoveBack} from "@/hooks/useMoveBack";
 

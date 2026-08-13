@@ -1,6 +1,6 @@
 import CategoryList from "@/app/blogs/_components/CategoryList";
 import {Suspense} from "react";
-import Loading from "@/app/blogs/Loading";
+import Loading from "@/app/blogs/loading";
 
 export const metadata = {
     title: "Blog",

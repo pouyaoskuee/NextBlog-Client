@@ -20,7 +20,7 @@ function Loading() {
             </style>
 
             <div className="p-4 h-dvh w-full blur-sm">
-                <div className="bg-primary-200/50 w-full h-full shadow-2xl blur-sm loading-dim"></div>
+                <div className="bg-primary-200/50 rounded-3xl w-full h-full shadow-2xl blur-sm loading-dim"></div>
             </div>
         </>
     );

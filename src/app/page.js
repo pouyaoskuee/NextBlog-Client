@@ -1,6 +1,7 @@
 import Button from "@/ui/Button";
 import Header from "@/components/Header";
 import React from "react";
+import Link from "next/link";
 
 export const metadata = {
     title: "Home | next Blog",
@@ -17,7 +18,7 @@ export default function Home() {
                     <p>بتونی بلاگ بسازی ـ کامنت بزاری و در پلنت همه اتفاق هارو رصد کنی!</p>
                 </div>
                 <div className={'flex gap-4'}>
-                    <Button variant={'outline'}>مطالعه بلاگ ها</Button>
+                    <Link href={'blogs'}><Button variant={'outline'}>مطالعه بلاگ ها</Button></Link>
                     <Button variant={'primary'}>مدریت بلاگ ها</Button>
                 </div>
 

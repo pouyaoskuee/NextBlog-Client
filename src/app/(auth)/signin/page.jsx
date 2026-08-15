@@ -4,19 +4,14 @@ import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import Button from "@/ui/Button";
-import {signUp} from "@/services/authServices";
+import {signIn, signUp} from "@/services/authServices";
 import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
-
-// export const metadata= {
-//     title:'ثبت نام'
-// }
 
 function Page() {
     const router = useRouter();
 
     const schema = yup.object({
-        fullName: yup.string().required('نام و نام خانوادگی ضروری است').min(5,'نام نامعتبر است').max(30,'تعداد کارکتر بیش از حد مجاز است'),
         email: yup.string().email('ایمیل نامعتبر است').required('ایمیل ضروری است').min(5,'ایمیل نامعتبر است').max(40,'تعداد کارکتر بیش از حد مجاز است'),
         password: yup.string().required('رمز عبور ضروری است').min(8,'تعداد کارکتر باید بیشتر از 8im باشد').max(30,'تعداد کارکتر بیش از حد مجاز است'),
     }).required()
@@ -28,9 +23,7 @@ function Page() {
 
     async function onSubmit(values){
         try {
-            const newValues = {...values , name:values.fullName};
-            delete newValues.fullName;
-            const {message , user} = await signUp(newValues)
+            const {message , user} = await signIn(values)
             toast.success(message)
         }catch(err){
             toast.error(err?.response?.data?.message)
@@ -42,12 +35,6 @@ function Page() {
         <div className={'mx-auto w-md space-y-6'}>
             <h2>ثبت نام</h2>
             <form onSubmit={handleSubmit(onSubmit)} className={'space-y-4'}>
-                <RHFTextField
-                    name={'fullName'}
-                    label={'نام و نام خانوادگی'}
-                    register={register}
-                    errors={errors}
-                />
                 <RHFTextField
                     name={'email'}
                     label={'ایمیل'}
@@ -63,10 +50,10 @@ function Page() {
                     type={'password'}
                 />
                 <Button className={'w-full'} variant={'primary'} onClick={handleSubmit(onSubmit)}>
-                    ثبت نام
-                </Button>
-                <Button className={'w-full'} type={'button'} variant={'secondary'} onClick={()=>router.push('/signin')}>
                     ورود
+                </Button>
+                <Button className={'w-full'} type={'button'} variant={'secondary'} onClick={()=>router.push('/signup')}>
+                    ثبت نام
                 </Button>
             </form>
         </div>

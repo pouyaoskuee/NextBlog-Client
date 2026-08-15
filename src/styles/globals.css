@@ -91,7 +91,7 @@
 
 @layer component{
     .btn{
-        @apply py-1 px-3 rounded-xl transition-all duration-300 ease-in-out shadow-md dark:shadow-xs
+        @apply py-2 px-3 rounded-xl transition-all duration-300 ease-in-out shadow-md dark:shadow-xs
     }
 
     .btn--primary{

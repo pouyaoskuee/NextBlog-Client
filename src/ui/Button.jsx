@@ -6,11 +6,12 @@ const btnType = {
     outline: 'btn--outline',
 }
 
-function Button({onClick, children , variant , ...rest}) {
+function Button({onClick, children , variant , type='submit' , className , ...rest}) {
     return (
         <button
+            type={type}
             onClick={onClick}
-            className={`btn ${btnType[variant]}`}
+            className={`btn ${btnType[variant]} ${className}`}
             {...rest}
         >
             {children}

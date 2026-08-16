@@ -4,9 +4,8 @@ import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import Button from "@/ui/Button";
-import {signUp} from "@/services/authServices";
-import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
+import {useAuth} from "@/context/authContext";
 
 // export const metadata= {
 //     title:'ثبت نام'
@@ -26,15 +25,12 @@ function Page() {
         mode:'all'
     })
 
+    const {signUp} = useAuth()
+
     async function onSubmit(values){
-        try {
-            const newValues = {...values , name:values.fullName};
-            delete newValues.fullName;
-            const {message , user} = await signUp(newValues)
-            toast.success(message)
-        }catch(err){
-            toast.error(err?.response?.data?.message)
-        }
+
+        await signUp(values)
+
 
     }
 

@@ -4,9 +4,10 @@ import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import Button from "@/ui/Button";
-import {signIn, signUp} from "@/services/authServices";
+import {signInApi} from "@/services/authServices";
 import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
+import {useAuth} from "@/context/authContext";
 
 function Page() {
     const router = useRouter();
@@ -21,13 +22,13 @@ function Page() {
         mode:'all'
     })
 
+    const {signIn , isLoading} = useAuth()
+    console.log(isLoading)
+
     async function onSubmit(values){
-        try {
-            const {message , user} = await signIn(values)
-            toast.success(message)
-        }catch(err){
-            toast.error(err?.response?.data?.message)
-        }
+
+        await signIn(values)
+
 
     }
 
@@ -49,7 +50,7 @@ function Page() {
                     errors={errors}
                     type={'password'}
                 />
-                <Button className={'w-full'} variant={'primary'} onClick={handleSubmit(onSubmit)}>
+                <Button isLoading={isLoading}  className={'w-full'} variant={'primary'} onClick={handleSubmit(onSubmit)}>
                     ورود
                 </Button>
                 <Button className={'w-full'} type={'button'} variant={'secondary'} onClick={()=>router.push('/signup')}>

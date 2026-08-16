@@ -1,3 +1,4 @@
+import {SpinnerMini} from "@/ui/Spinner";
 
 const btnType = {
     primary: 'btn--primary',
@@ -6,15 +7,15 @@ const btnType = {
     outline: 'btn--outline',
 }
 
-function Button({onClick, children , variant , type='submit' , className , ...rest}) {
+function Button({onClick, children , variant , type='submit' , className , isLoading=false , ...rest}) {
     return (
         <button
             type={type}
             onClick={onClick}
-            className={`btn ${btnType[variant]} ${className}`}
+            className={`btn flex justify-center  ${btnType[variant]} ${className} `}
             {...rest}
         >
-            {children}
+            {isLoading? <SpinnerMini/> : children}
         </button>
     );
 }

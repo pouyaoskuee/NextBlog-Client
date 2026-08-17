@@ -1,14 +1,16 @@
 import CustomLink from "@/ui/CustomLink";
+import {getPostsCategoriesApi} from "@/services/postSevices";
 
 async function CategoryList() {
-    const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/category/list`);
-    const {data: {categories}} = await result.json();
+
+    const {categories} = await getPostsCategoriesApi()
+
 
     return (
         <ul className={'space-y-2'}>
-            <CategoriesList href={'/'}> همه</CategoriesList>
+            <CategoriesList href={'/blogs'}> همه</CategoriesList>
             {categories.map(category => (
-                <CategoriesList key={category._id} href={`/${category.slug}`}>{category.title}</CategoriesList>
+                <CategoriesList key={category._id} href={`/blogs/category/${category.slug}`}>{category.title}</CategoriesList>
             ))}
         </ul>
     );

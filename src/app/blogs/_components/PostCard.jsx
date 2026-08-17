@@ -9,11 +9,12 @@ function PostCard({post}) {
     return (
         <div className={'border border-secondary-300 shadow-md rounded-lg overflow-hidden  '}>
             <div className={'relative aspect-video'}>
-                <Link href={`/blogs/${post.slug}`}>
+                <Link className={'relative block w-full h-full'} href={`/blogs/${post.slug}`}>
                     <Image
                         src={post.coverImageUrl}
                         alt={post.title}
                         fill
+                        sizes='cover'
                         className={'object-cover object-center hover:scale-110 transition-all duration-300 ease-in-out'}
                     />
                 </Link>

@@ -7,17 +7,16 @@ export async function getPostsCategoriesApi () {
     return  await result.json().then(data => data.data);
 }
 
-export async function getAllPosts(options = {}) {
+export async function getAllPosts({options = {} , queries}) {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list` , options);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list?${queries}` , options);
     const { data } = await res.json();
     const {posts} = data || {}
     return posts;
 }
 
-export async function getFilteredPosts(slug) {
-    console.log(slug)
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list?categorySlug=${slug}`);
+export async function getFilteredPosts({categorySlug, queries}) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list?categorySlug=${categorySlug}&${queries}`);
     const { data } = await res.json();
     const {posts} = data || {}
     return posts;

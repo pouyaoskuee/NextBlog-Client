@@ -2,12 +2,16 @@ import PostsList from "@/app/blogs/_components/PostsList";
 import {cookies} from "next/headers";
 import {setCookies} from "@/utils/setCookies";
 import {getAllPosts} from "@/services/postSevices";
+import queryString from "query-string";
 
-async function page() {
+async function page({searchParams}) {
 
+    const queries = queryString.stringify(await searchParams);
+    console.log(queries)
     const cookiesStore = await cookies()
     const options = await setCookies(cookiesStore)
-    const posts = await getAllPosts(options)
+    const posts = await getAllPosts({options, queries})
+
 
     return (
         <div>

@@ -4,8 +4,6 @@ import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import Button from "@/ui/Button";
-import {signInApi} from "@/services/authServices";
-import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
 import {useAuth} from "@/context/authContext";
 
@@ -23,7 +21,6 @@ function Page() {
     })
 
     const {signIn , isLoading} = useAuth()
-    console.log(isLoading)
 
     async function onSubmit(values){
 

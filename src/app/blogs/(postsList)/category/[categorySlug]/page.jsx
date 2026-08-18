@@ -13,8 +13,8 @@ async function Page({params , searchParams}) {
 
     return (
         <>
-            <div>
-                {posts.length === 0 ? <p>{`نتیجه ای برای ${search.search} پیدا نشد`}</p> : <p>{`${posts.length}نتیجه برای ${(search.search)|| categorySlug  }`}</p> }
+            <div className={'mb-4'}>
+                {posts.length === 0 ? <p>{`نتیجه ای برای ${search.search || categorySlug } پیدا نشد`}</p> : <p>{`${posts.length} نتیجه برای کلمه ${(search.search)|| ` دسته بندی ${categorySlug} ` }`}</p> }
             </div>
             <PostsList posts={posts} />
         </>

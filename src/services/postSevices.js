@@ -7,7 +7,7 @@ export async function getPostsCategoriesApi () {
     return  await result.json().then(data => data.data);
 }
 
-export async function getAllPosts({options = {} , queries}) {
+export async function getAllPosts({options = {} , queries=''}={}) {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list?${queries}` , options);
     const { data } = await res.json();

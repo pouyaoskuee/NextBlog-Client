@@ -1,24 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 import Avatar from "@/app/blogs/_components/Avatar";
 import {ClockIcon} from "@heroicons/react/24/outline";
 import Interaction from "@/app/blogs/_components/Interaction";
+import CoverImage from "@/app/blogs/_components/CoverImage";
 
 
 function PostCard({post}) {
     return (
         <div className={'border border-secondary-300 shadow-md rounded-lg overflow-hidden  '}>
-            <div className={'relative aspect-video'}>
-                <Link className={'relative block w-full h-full'} href={`/blogs/${post.slug}`}>
-                    <Image
-                        src={post.coverImageUrl}
-                        alt={post.title}
-                        fill
-                        sizes='cover'
-                        className={'object-cover object-center hover:scale-110 transition-all duration-300 ease-in-out'}
-                    />
-                </Link>
-            </div>
+                <CoverImage post={post} />
             <div className={'p-2 space-y-3 mt-2'}>
                 <div>
                     <Link href={`/blogs/${post.slug}`}>

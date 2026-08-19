@@ -1,6 +1,7 @@
 import Button from "@/ui/Button";
 import React from "react";
 import Link from "next/link";
+import Header from "@/components/Header";
 
 export const metadata = {
     title: "Home | next Blog",
@@ -10,6 +11,7 @@ export const metadata = {
 export default function Home() {
     return (
         <div>
+            <Header/>
             <main className={'flex flex-col items-center justify-center gap-10'}>
                 <h1>اپلکیشن مدیریت بلاگ</h1>
                 <div className={'space-y-1'}>
@@ -17,7 +19,7 @@ export default function Home() {
                     <p>بتونی بلاگ بسازی ـ کامنت بزاری و در پلنت همه اتفاق هارو رصد کنی!</p>
                 </div>
                 <div className={'flex gap-4'}>
-                    <Link href={'blogs'}><Button variant={'outline'}>مطالعه بلاگ ها</Button></Link>
+                    <Link href={'(blog)/blogs'}><Button variant={'outline'}>مطالعه بلاگ ها</Button></Link>
                     <Button variant={'primary'}>مدریت بلاگ ها</Button>
                 </div>
 

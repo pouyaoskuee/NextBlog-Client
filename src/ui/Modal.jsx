@@ -11,7 +11,7 @@ function Modal({ open, onClose, title, children, description = "" }) {
     createPortal(
       <div
         className="backdrop-blur-sm fixed top-0 left-0
-           w-full h-screen bg-secondary-800 bg-opacity-30 z-50"
+           w-full h-screen bg-secondary-600/30 z-50"
       >
         <div
           ref={ref}

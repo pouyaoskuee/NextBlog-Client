@@ -29,7 +29,6 @@ async function Page({ params }) {
 
     if (!post) return notFound();
 
-    console.log(post);
 
     return(
         <>

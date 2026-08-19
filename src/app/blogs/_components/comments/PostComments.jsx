@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from 'react';
+import {useState} from 'react';
 import Button from "@/ui/Button";
 import {QuestionMarkCircleIcon} from "@heroicons/react/24/outline";
 import Comment from "@/app/blogs/_components/comments/Comment";
@@ -17,7 +17,6 @@ function PostComments({post:{comments , _id:postId}}) {
     const router = useRouter()
 
     function onAddComment(comment){
-        console.log(comment)
         if (!user) {
             router.push(`/signin`)
             return

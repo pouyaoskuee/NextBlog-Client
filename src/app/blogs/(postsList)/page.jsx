@@ -7,7 +7,6 @@ import queryString from "query-string";
 async function page({searchParams}) {
 
     const queries = queryString.stringify(await searchParams);
-    console.log(queries)
     const cookiesStore = await cookies()
     const options = await setCookies(cookiesStore)
     const posts = await getAllPosts({options, queries})

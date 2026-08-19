@@ -4,7 +4,7 @@ import Button from "@/ui/Button";
 
 function Comment({ comment, onAddComment }) {
 
-    console.log(comment.user);
+
   return (
     <>
       <div className="flex items-center justify-between mb-5 border-b border-b-secondary-200/60 pb-2">

@@ -1,4 +1,6 @@
+"use client"
 import {SpinnerMini} from "@/ui/Spinner";
+import {useFormStatus} from "react-dom";
 
 const btnType = {
     primary: 'btn--primary',
@@ -8,6 +10,10 @@ const btnType = {
 }
 
 function Button({onClick, children , variant , type='submit' , className , isLoading=false , ...rest}) {
+    const {pending} = useFormStatus()
+
+    isLoading = pending || isLoading
+
     return (
         <button
             type={type}

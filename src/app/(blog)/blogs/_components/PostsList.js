@@ -1,4 +1,4 @@
-import PostCard from "@/app/blogs/_components/PostCard";
+import PostCard from "@/app/(blog)/blogs/_components/PostCard";
 import {setCookies} from "@/utils/setCookies";
 
 async function PostsList({posts}) {

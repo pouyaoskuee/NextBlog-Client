@@ -1,8 +1,8 @@
 import Image from "next/image";
-import notFound from "@/app/blogs/[postSlug]/not-found";
+import notFound from "@/app/(blog)/blogs/[postSlug]/not-found";
 import {getAllPosts, getPost} from "@/services/postSevices";
-import RelatedPost from "@/app/blogs/_components/RelatedPost";
-import PostComments from "@/app/blogs/_components/comments/PostComments";
+import RelatedPost from "@/app/(blog)/blogs/_components/RelatedPost";
+import PostComments from "@/app/(blog)/blogs/_components/comments/PostComments";
 
 
 

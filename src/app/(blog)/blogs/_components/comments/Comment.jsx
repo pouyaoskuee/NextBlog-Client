@@ -1,4 +1,4 @@
-import Avatar from "@/app/blogs/_components/Avatar";
+import Avatar from "@/app/(blog)/blogs/_components/Avatar";
 import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
 import Button from "@/ui/Button";
 

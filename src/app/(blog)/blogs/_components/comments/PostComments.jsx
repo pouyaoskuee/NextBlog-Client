@@ -2,12 +2,12 @@
 import {useState} from 'react';
 import Button from "@/ui/Button";
 import {QuestionMarkCircleIcon} from "@heroicons/react/24/outline";
-import Comment from "@/app/blogs/_components/comments/Comment";
+import Comment from "@/app/(blog)/blogs/_components/comments/Comment";
 import classNames from "classnames";
 import Modal from "@/ui/Modal";
 import {useAuth} from "@/context/authContext";
 import {useRouter} from "next/navigation";
-import CommentForm from "@/app/blogs/_components/comments/CommentForm";
+import CommentForm from "@/app/(blog)/blogs/_components/comments/CommentForm";
 
 function PostComments({post:{comments , _id:postId}}) {
 

@@ -1,6 +1,6 @@
-import CategoryList from "@/app/blogs/_components/CategoryList";
+import CategoryList from "@/app/(blog)/blogs/_components/CategoryList";
 import {Suspense} from "react";
-import Loading from "@/app/blogs/loading";
+import Loading from "@/app/(blog)/blogs/loading";
 import Search from "@/ui/Search";
 
 export const metadata = {

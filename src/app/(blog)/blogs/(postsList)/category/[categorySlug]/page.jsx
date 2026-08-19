@@ -1,5 +1,5 @@
 import React from 'react';
-import PostsList from "@/app/blogs/_components/PostsList";
+import PostsList from "@/app/(blog)/blogs/_components/PostsList";
 import {getFilteredPosts} from "@/services/postSevices";
 import queryString from "query-string";
 

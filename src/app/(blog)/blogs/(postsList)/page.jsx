@@ -1,4 +1,4 @@
-import PostsList from "@/app/blogs/_components/PostsList";
+import PostsList from "@/app/(blog)/blogs/_components/PostsList";
 import {cookies} from "next/headers";
 import {setCookies} from "@/utils/setCookies";
 import {getAllPosts} from "@/services/postSevices";

@@ -1,5 +1,5 @@
 import CoverImage from "./CoverImage";
-import Avatar from "@/app/blogs/_components/Avatar";
+import Avatar from "@/app/(blog)/blogs/_components/Avatar";
 
 function RelatedPost({ posts }) {
     return (

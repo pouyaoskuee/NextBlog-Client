@@ -2,7 +2,7 @@
 
 import TextArea from "@/ui/TextArea";
 import Button from "@/ui/Button";
-import {createComments} from "@/app/lib/action";
+import {createComments} from "@/lib/action";
 import {useActionState, useEffect} from "react";
 import toast from "react-hot-toast";
 

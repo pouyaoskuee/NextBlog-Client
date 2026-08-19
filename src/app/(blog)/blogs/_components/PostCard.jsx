@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Avatar from "@/app/blogs/_components/Avatar";
+import Avatar from "@/app/(blog)/blogs/_components/Avatar";
 import {ClockIcon} from "@heroicons/react/24/outline";
-import Interaction from "@/app/blogs/_components/Interaction";
-import CoverImage from "@/app/blogs/_components/CoverImage";
+import Interaction from "@/app/(blog)/blogs/_components/Interaction";
+import CoverImage from "@/app/(blog)/blogs/_components/CoverImage";
 
 
 function PostCard({post}) {

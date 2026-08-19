@@ -5,13 +5,27 @@ import {QuestionMarkCircleIcon} from "@heroicons/react/24/outline";
 import Comment from "@/app/blogs/_components/comments/Comment";
 import classNames from "classnames";
 import Modal from "@/ui/Modal";
+import {useAuth} from "@/context/authContext";
+import {useRouter} from "next/navigation";
+import CommentForm from "@/app/blogs/_components/comments/CommentForm";
 
 function PostComments({post:{comments , _id:postId}}) {
 
     const [open, setOpen] = useState(false)
+    const [parent, setParent] = useState(null)
+    const {user} = useAuth()
+    const router = useRouter()
 
-    function onAddComment(){
+    function onAddComment(comment){
+        console.log(comment)
+        if (!user) {
+            router.push(`/signin`)
+            return
+        }
         setOpen(true)
+        setParent(comment)
+
+
     }
 
 
@@ -22,22 +36,22 @@ function PostComments({post:{comments , _id:postId}}) {
                 <h2>نظرات</h2>
                 <Button
                     variant="outline"
-                    onClick={onAddComment}
+                    onClick={()=>onAddComment(null)}
                 >
                     <QuestionMarkCircleIcon className="w-4 ml-2" />
                     <span>ثبت نظر جدید</span>
                 </Button>
                 <Modal
-                    // title={parent ? "پاسخ به نظر" : "نظر جدید"}
-                    // description={parent ? parent.user.name : "نظر خود را وارد کنید"}
+                    title={parent ? "پاسخ به نظر" : "نظر جدید"}
+                    description={parent ? parent.user.name : "نظر خود را وارد کنید"}
                     open={open}
                     onClose={() => setOpen(false)}
                 >
-                    {/*<CommentForm*/}
-                    {/*    postId={postId}*/}
-                    {/*    parentId={parent ? parent._id : null}*/}
-                    {/*    onClose={() => setOpen(false)}*/}
-                    {/*/>*/}
+                    <CommentForm
+                        postId={postId}
+                        parentId={parent ? parent._id : null}
+                        onClose={() => setOpen(false)}
+                    />
                 </Modal>
             </div>
             <div className="space-y-8 post-comments bg-secondary-0 rounded-xl py-6 px-3 lg:px-6 ">
@@ -48,7 +62,7 @@ function PostComments({post:{comments , _id:postId}}) {
                                 <div className="border border-secondary-200 rounded-xl p-2 sm:p-4 mb-3">
                                     <Comment
                                         comment={comment}
-                                        onAddComment={() => onAddComment()}
+                                        onAddComment={() => onAddComment(comment)}
                                     />
                                 </div>
                                 <div className="post-comments__answer mr-2 sm:mr-8 space-y-3">

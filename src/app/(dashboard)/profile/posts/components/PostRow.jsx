@@ -1,4 +1,4 @@
-import truncateText from "@/utils/trancateText";
+import truncateText from "@/utils/truncateText";
 import {toPersianNumbers} from "@/utils/toPersianNumber";
 import Table from "@/ui/Table";
 import {DeletePost, UpdatePost} from "@/app/(dashboard)/profile/posts/components/Buttons";

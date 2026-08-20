@@ -1,11 +1,10 @@
-import {getAllPosts} from "@/services/postSevices";
 import Empty from "@/ui/Empty";
 import Table from "@/ui/Table";
 import PostRow from "@/app/(dashboard)/profile/posts/components/PostRow";
 
 async function PostTable({posts}) {
 
-    if (posts.length === 0) <Empty resourceName={'پستی'}/>
+    if (posts.length === 0) return <Empty resourceName={'پستی'}/>
 
     return (
         <Table>

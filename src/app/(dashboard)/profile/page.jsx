@@ -11,7 +11,7 @@ export const metadata = {
 async function Profile() {
 
 
-    const posts = await getAllPosts({queries:'sort=latest&limit=4'});
+    const {posts} = await getAllPosts({queries:'sort=latest&limit=4'});
 
   return (
     <div className={'space-y-10'}>

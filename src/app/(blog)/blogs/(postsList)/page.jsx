@@ -9,7 +9,7 @@ async function page({searchParams}) {
     const queries = queryString.stringify(await searchParams);
     const cookiesStore = await cookies()
     const options = await setCookies(cookiesStore)
-    const posts = await getAllPosts({options, queries})
+    const {posts} = await getAllPosts({options, queries})
 
 
     return (

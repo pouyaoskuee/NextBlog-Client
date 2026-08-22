@@ -11,8 +11,8 @@ export async function getAllPosts({options = {} , queries=''}={}) {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list?${queries}` , options);
     const { data } = await res.json();
-    const {posts} = data || {}
-    return posts;
+    const {posts , totalPages} = data || {}
+    return {posts , totalPages};
 }
 
 export async function getFilteredPosts({categorySlug, queries}) {

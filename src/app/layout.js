@@ -2,6 +2,7 @@ import "@/styles/globals.css"
 import vazirFont from "@/constants/localFont";
 import {Toaster} from "react-hot-toast";
 import AuthProvider from "@/context/authContext";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
 
 export const metadata = {
   title: {
@@ -16,10 +17,12 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir={'rtl'}>
       <body
           className={` ${vazirFont.variable} font-sans`}>
-      <AuthProvider>
-          <Toaster/>
-          {children}
-      </AuthProvider>
+      <ReactQueryProvider>
+          <AuthProvider>
+              <Toaster/>
+              {children}
+          </AuthProvider>
+      </ReactQueryProvider>
       </body>
     </html>
   );

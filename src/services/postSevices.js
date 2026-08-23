@@ -46,3 +46,7 @@ export function likePostApi(postId) {
 export function bookmarkPostApi(postId) {
     return http.post(`/post/bookmark/${postId}`).then(({data}) => data.data);
 }
+export function createPostApi(data) {
+    console.log(data)
+    return http.post(`/post/create` , data).then(({data}) => data.data);
+}

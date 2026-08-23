@@ -3,9 +3,9 @@ import {getAllPosts} from "@/services/postSevices";
 import {Suspense} from "react";
 import {Spinner} from "@/ui/Spinner";
 import Search from "@/ui/Search";
-import {CreatePost} from "@/app/(dashboard)/profile/posts/components/Buttons";
 import queryString from "query-string";
 import Pagination from "@/ui/Pagination";
+import {CreatePostBtn} from "@/app/(dashboard)/profile/posts/components/Buttons";
 
 async function posts({searchParams})  {
 
@@ -22,7 +22,7 @@ async function posts({searchParams})  {
             <div className={'flex justify-between gap-10'}>
                 <h2 className={'font-medium'}>پست ها</h2>
                 <Search/>
-                <CreatePost/>
+                <CreatePostBtn/>
             </div>
             <Suspense fallback={<Spinner text={'درحال بارگذاری پست ها'} />} key={queries}>
                 <PostTable posts={posts} />

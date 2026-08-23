@@ -47,6 +47,17 @@ export function bookmarkPostApi(postId) {
     return http.post(`/post/bookmark/${postId}`).then(({data}) => data.data);
 }
 export function createPostApi(data) {
-    console.log(data)
     return http.post(`/post/create` , data).then(({data}) => data.data);
+}
+
+export function editPostApi({formData , id}) {
+    return http.patch(`/post/update/${id}` , formData).then(({data}) => data.data);
+}
+
+export function getPostByIdApi(id) {
+    return http.get(`/post/${id}`).then(({data}) => data.data);
+}
+
+export function removePostByIdApi(id) {
+    return http.delete(`/post/remove/${id}`).then(({data}) => data.data);
 }

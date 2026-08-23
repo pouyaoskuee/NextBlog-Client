@@ -6,20 +6,48 @@ import RHFTextField from "@/ui/RHFTextField";
 import RHFSelect from "@/ui/RHFSelect";
 import Button from "@/ui/Button";
 import {useCategories} from "@/app/(dashboard)/profile/posts/create/_/hooks/useCategories";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Image from "next/image";
 import ButtonIcon from "@/ui/ButtonIcon";
 import {XMarkIcon} from "@heroicons/react/24/outline";
 import FileInput from "@/ui/FileInput";
 import {log} from "next/dist/server/typescript/utils";
 import {useCreatePost} from "@/app/(dashboard)/profile/posts/create/_/hooks/useCreatePost";
-import {useRouter} from "next/navigation";
+import {useParams, useRouter} from "next/navigation";
+import {useEditPost} from "@/app/(dashboard)/profile/posts/create/_/hooks/useEditPost";
+import {imageUrlToFile} from "@/utils/fileFormatter";
 
-function CreatePostForm() {
+function CreatePostForm({post}) {
+    const isEditSession = Boolean(post);
+    const {
+        title,
+        text,
+        slug,
+        briefText,
+        readingTime,
+        category,
+        coverImage : prevCoverImage,
+        coverImageUrl: prevCoverImageUrl,
+
+    } = post || {}
+    let editValue = {}
+    if (isEditSession) {
+        editValue = {
+            title,
+            text,
+            slug,
+            briefText,
+            readingTime,
+            category: category._id,
+            coverImage : prevCoverImage,
+            coverImageUrl: prevCoverImageUrl,
+        }
+    }
+    const [coverImage, setCoverImage] = useState(prevCoverImageUrl || null)
     const router = useRouter()
-
-    const {mutate , isPending} = useCreatePost()
-
+    const {submitPost , isLoadingPost} = useCreatePost()
+    const {submitEdit , isLoadingEdit} = useEditPost()
+    const {categories , isLoading} = useCategories()
     const schema = yup
         .object({
             title: yup
@@ -48,32 +76,43 @@ function CreatePostForm() {
     const {handleSubmit  , formState:{errors} , register , reset , control , setValue} = useForm({
         mode: 'all',
         resolver: yupResolver(schema),
+        defaultValues: editValue,
     })
 
 
-    const [coverImage, setCoverImage] = useState(null)
 
-    const {categories , isLoading} = useCategories()
-    
     function onSubmit(data){
         const formData = new FormData()
         for (const key in data){
             formData.append(key, data[key])
         }
 
-        for (const [key, value] of formData.entries()) {
-
-
-
+        if (isEditSession){
+            submitEdit({id:post._id , formData } , {
+                onSuccess: ()=>{
+                    router.push("/profile/posts")
+                }
+            })
+        }else {
+            submitPost(formData , {
+                onSuccess: ()=>{
+                    router.push("/profile/posts")
+                }
+            })
         }
-
-        mutate(formData , {
-            onSuccess: ()=>{
-                router.push("/profile/posts")
-            }
-        })
-
     }
+
+
+    useEffect(() => {
+        if (isEditSession){
+            async function fetchData() {
+               const file = await imageUrlToFile(coverImage)
+                setValue('coverImage', file)
+            }
+
+            fetchData()
+        }
+    }, [post]);
 
 
     return (
@@ -134,7 +173,6 @@ function CreatePostForm() {
                             label={'عکس کاور'}
                             name={'coverImage'}
                             type={'file'}
-                            isRequired
                             value={value?.fileName}
                             onChange={e => {
                                 const file = e.target.files[0];
@@ -163,7 +201,7 @@ function CreatePostForm() {
                 )
             }
 
-            <Button isLoading={isPending} variant={'primary'} type={'submit'}>
+            <Button isLoading={isLoadingPost} variant={'primary'} type={'submit'}>
                 ایجاد پست
             </Button>
 

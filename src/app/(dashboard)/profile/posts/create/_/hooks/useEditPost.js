@@ -1,12 +1,12 @@
-import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {createPostApi} from "@/services/postSevices";
 import toast from "react-hot-toast";
+import {editPostApi} from "@/services/postSevices";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 
-export function useCreatePost() {
+export function useEditPost() {
     const queryClient = useQueryClient();
-    const {mutate:submitPost , isPending:isLoadingPost} = useMutation({
-        mutationKey: ['createPosts'],
-        mutationFn: createPostApi,
+    const {mutate:submitEdit , isPending:isLoadingEdit} = useMutation({
+        mutationKey: ['editePosts'],
+        mutationFn: editPostApi,
         onSuccess: (data ) => {
             console.log('success', data);
             toast.success(data.message);
@@ -15,12 +15,11 @@ export function useCreatePost() {
             })
         },
         onError: ( error ) => {
-            console.log('error', error);
             toast.error(error?.response?.data?.message);
         },
 
 
     })
 
-    return {submitPost , isLoadingPost}
+    return {submitEdit , isLoadingEdit}
 }

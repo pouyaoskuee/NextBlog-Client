@@ -6,21 +6,73 @@ import RHFTextField from "@/ui/RHFTextField";
 import RHFSelect from "@/ui/RHFSelect";
 import Button from "@/ui/Button";
 import {useCategories} from "@/app/(dashboard)/profile/posts/create/_/hooks/useCategories";
-import TextField from "@/ui/TextField";
+import {useState} from "react";
+import Image from "next/image";
+import ButtonIcon from "@/ui/ButtonIcon";
+import {XMarkIcon} from "@heroicons/react/24/outline";
+import FileInput from "@/ui/FileInput";
+import {log} from "next/dist/server/typescript/utils";
+import {useCreatePost} from "@/app/(dashboard)/profile/posts/create/_/hooks/useCreatePost";
+import {useRouter} from "next/navigation";
 
 function CreatePostForm() {
+    const router = useRouter()
 
-    const schema = yup.object()
+    const {mutate , isPending} = useCreatePost()
 
-    const {handleSubmit  , formState:{errors} , register , reset , control} = useForm({
+    const schema = yup
+        .object({
+            title: yup
+                .string()
+                .min(5, "حداقل ۵ کاراکتر را وارد کنید")
+                .required("عنوان ضروری است"),
+            briefText: yup
+                .string()
+                .min(5, "حداقل ۱۰ کاراکتر را وارد کنید")
+                .required("توضیحات ضروری است"),
+            text: yup
+                .string()
+                .min(5, "حداقل ۱۰ کاراکتر را وارد کنید")
+                .required("توضیحات ضروری است"),
+            slug: yup.string().required("اسلاگ ضروری است"),
+            readingTime: yup
+                .number()
+                .positive()
+                .integer()
+                .required("زمان مطالعه ضروری است")
+                .typeError("یک عدد را وارد کنید"),
+            category: yup.string().required("دسته بندی ضروری است"),
+        })
+        .required();
+
+    const {handleSubmit  , formState:{errors} , register , reset , control , setValue} = useForm({
         mode: 'all',
-        resolvers: yupResolver(schema),
+        resolver: yupResolver(schema),
     })
+
+
+    const [coverImage, setCoverImage] = useState(null)
 
     const {categories , isLoading} = useCategories()
     
-    function onSubmit(formState){
-        console.log(formState)
+    function onSubmit(data){
+        const formData = new FormData()
+        for (const key in data){
+            formData.append(key, data[key])
+        }
+
+        for (const [key, value] of formData.entries()) {
+
+
+
+        }
+
+        mutate(formData , {
+            onSuccess: ()=>{
+                router.push("/profile/posts")
+            }
+        })
+
     }
 
 
@@ -72,28 +124,46 @@ function CreatePostForm() {
             />
             
             <Controller
-                name={'imageCover'}
+                name={'coverImage'}
                 control={control}
                 rules={{required: 'عکس کاور پست الزامی میباشد'}}
                 render={({field:{value , onChange , ...rest}})=>{
                     return (
-                        <TextField
+                        <FileInput
+                            {...rest}
                             label={'عکس کاور'}
-                            name={'imageCover'}
+                            name={'coverImage'}
                             type={'file'}
                             isRequired
                             value={value?.fileName}
                             onChange={e => {
                                 const file = e.target.files[0];
                                 onChange(file)
+                                setCoverImage(URL.createObjectURL(file))
                             }}
-                            {...rest}
                         />
                     )
                 }}
             />
 
-            <Button variant={'primary'} type={'submit'}>
+            {
+                coverImage && (
+                    <div className={'relative aspect-video overflow-hidden rounded-lg'}>
+                        <ButtonIcon
+                            variant={'red'}
+                            className={' size-8 z-10 absolute top-2 , left-2'}
+                            onClick={()=>{
+                                setCoverImage(null)
+                                setValue('coverImage' , null)
+                            }}>
+                            <XMarkIcon/>
+                        </ButtonIcon>
+                        <Image src={coverImage} alt={'coverImage'} fill className={'object-cover'}/>
+                    </div>
+                )
+            }
+
+            <Button isLoading={isPending} variant={'primary'} type={'submit'}>
                 ایجاد پست
             </Button>
 

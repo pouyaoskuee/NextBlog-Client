@@ -8,7 +8,7 @@ import PostComments from "@/app/(blog)/blogs/_components/comments/PostComments";
 
 export async function generateStaticParams(){
     const {posts} = await getAllPosts();
-    return posts.slice(0,4).map(item => {
+    return posts?.slice(0,4).map(item => {
         return {postSlug: item.slug};
     })
 }

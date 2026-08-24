@@ -1,175 +1,257 @@
-# NextBlog - Blog Platform
+NextBlog - Blog Platform
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/homeDesktdopLight.png" width="100%">
 </p>
-
 <p align="center">
-  A modern full-stack freelancing platform connecting employers with freelancers through a secure and responsive web application.
+  A modern full-stack blog platform built with Next.js, featuring secure authentication, dynamic content rendering, interactive user engagement, and optimized data fetching.
+</p>
+<p align="center">
+  <a href="">🌐 Live Demo</a> •
+  <a href="https://github.com/pouyaoskuee/NextBlog-Client">Frontend</a> •
+  <a href="https://github.com/pouyaoskuee/NextBlog-Server">Backend</a>
 </p>
 
-<p align="center">
-  <a href="https://deadlancer.ir">🌐 Live Demo</a> •
-  <a href="https://github.com/pouyaoskuee/Freelancer-App-Client">Frontend</a> •
-  <a href="https://github.com/pouyaoskuee/Freelancer-App-Server">Backend</a>
-</p>
+⸻
 
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
-![TailwindCSS](https://img.shields.io/badge/Tailwind-v4-38BDF8?logo=tailwindcss)
-![TanStack Query](https://img.shields.io/badge/TanStack_Query-FF4154)
-![License](https://img.shields.io/badge/License-Portfolio-success)
+Overview
 
-------------------------------------------------------------------------
+NextBlog is a full-stack blog platform built with Next.js and React.
 
-## Overview
+The platform allows users to browse and search blog posts, filter content by category, and interact with posts through comments, likes, and bookmarks.
 
-Deadlancer is a full-stack freelancing platform that connects employers
-with freelancers. Employers can create projects while freelancers browse
-projects and submit proposals. The platform provides three independent
-dashboards:
+The application focuses on modern Next.js features such as dynamic and static rendering, ISR, data caching and revalidation, Server Actions, Middleware-based route protection, Streaming, Suspense, and dynamic metadata.
 
--   Employer Dashboard
--   Freelancer Dashboard
--   Admin Dashboard
+The backend is maintained as a separate project and communicates with the frontend through a RESTful API.
 
-Users authenticate using OTP verification via mobile number. After
-completing their profile, an administrator reviews and approves the
-account before granting full access.
+⸻
 
-------------------------------------------------------------------------
+🚀 Features
 
-## 🚀 Features
--  JWT Authentication with Access & Refresh Tokens
--  Sign In / Sign Out
--  Protected Routes with Next.js Middleware
--  User Authentication State Management with Context API
--  Server Actions for Form Submission
--  Dynamic & Static Routes
--  ISR (Incremental Static Regeneration)
--  Data Caching & Revalidation
--  Streaming & Suspense
--  Loading States & Error Boundaries
--  Search & Category Filtering
--  Pagination
--  Comments, Likes & Bookmarks
--  Form Validation with React Hook Form & Yup
--  Compound Components Pattern
--  Reusable Components
--  Dynamic Metadata & SEO
--  Breadcrumb Navigation
--   Responsive (Mobile First)
--   REST API Integration
--   Reusable Components
--   Custom Hooks
+* JWT Authentication with Access & Refresh Tokens
+* Sign In / Sign Out
+* Cookie-based Authentication
+* Protected Routes with Next.js Middleware
+* User Authentication State Management with Context API
+* Server Actions for Form Submission
+* Dynamic & Static Routes
+* ISR (Incremental Static Regeneration)
+* Data Caching & Revalidation
+* Streaming & Suspense
+* Loading States
+* Error Boundaries
+* Search & Category Filtering
+* Pagination
+* Comments, Likes & Bookmarks
+* Form Handling with React Hook Form
+* Form Validation with Yup
+* Compound Components Pattern
+* Reusable Components
+* Custom Hooks
+* Dynamic Metadata & SEO
+* Breadcrumb Navigation
+* Responsive Design (Mobile-First)
+* REST API Integration
 
-## 🛠️ Tech Stack
+⸻
 
-### Frontend
+🛠️ Tech Stack
 
- Next.js
- React.js
- Tailwind CSS v4
- TanStack React Query
- React Hook Form
- Yup
- Context API
- Axios
- REST API
+Frontend
 
-### Backend
+* Next.js
+* React.js
+* Tailwind CSS v4
+* TanStack React Query
+* React Hook Form
+* Yup
+* Context API
+* Axios
+* REST API
 
-Backend implementation is maintained separately. This repository focuses
-on frontend development and REST API integration.
+Backend
 
-## 🔄 Authentication Flow
+Backend implementation is maintained separately.
 
-1.  Register / Login
-2.  set email & password
-3.  Receive JWT Tokens
-4.  Access Platform
+The frontend communicates with the backend through a RESTful API for authentication, blog posts, categories, comments, likes, bookmarks, and user-related operations.
 
-## 📡 API Communication
+⸻
 
--   Axios Instance
--   RESTful API Integration
--   Cookie-based Authentication
--   withCredentials Support
--   set Header in fetch
--   Centralized API Configuration
--   Error Handling
--   Loading States
+🔐 Authentication
 
-## 📂 Routing
+NextBlog uses JWT-based authentication with Access and Refresh Tokens.
 
-``` text
+Authentication Flow
+
+1. User signs in with their credentials.
+2. The backend validates the credentials.
+3. Access and Refresh Tokens are issued.
+4. Authentication data is handled through cookies.
+5. Protected routes are validated using Next.js Middleware.
+6. The application maintains the authenticated user’s state through Context API.
+7. Refresh Tokens are used to maintain authentication when the Access Token expires.
+
+⸻
+
+📡 API Communication
+
+The frontend communicates with the backend through a RESTful API.
+
+API Features
+
+* Axios Instance
+* RESTful API Integration
+* Cookie-based Authentication
+* withCredentials Support
+* Centralized API Configuration
+* Request & Response Handling
+* Authentication Headers
+* Error Handling
+* Loading States
+* FormData Submission
+
+⸻
+
+⚡ Next.js Architecture
+
+The project takes advantage of several Next.js App Router features:
+
+* Dynamic Routes
+* Static Routes
+* Route Groups
+* Middleware
+* Server Actions
+* ISR
+* Data Caching
+* Cache Revalidation
+* Streaming
+* Suspense
+* Loading UI
+* Error Boundaries
+* Dynamic Metadata
+
+These features are used to improve rendering performance, user experience, and application structure.
+
+⸻
+
+📂 Routing
+
 /
-├── auth
-├── complete-profile
-├── owner
-├── freelancer
-├── admin
+├── auth/
+│   ├── sign-in
+│   └── ...
+├── complete-profile/
+├── blogs/
+│   ├── [postSlug]
+│   └── ...
+├── categories/
+├── ...
 └── *
-```
 
-## 📂 Project Structure
+⸻
 
-``` text
+📂 Project Structure
+
 src/
-├── features/
+├── app/
+├── components/
 ├── hooks/
-├── pages/
 ├── services/
 ├── ui/
 ├── utils/
-└── context/
-```
+├── context/
+└── ...
 
-## ⚙️ Installation
+The project follows a reusable component-based architecture with separated UI components, services, hooks, utilities, and application routes.
 
-``` bash
-git clone https://github.com/pouyaoskuee/Freelancer-App-Client.git
+⸻
+
+📝 Blog Features
+
+Posts
+
+* Browse blog posts
+* Dynamic post pages
+* Search posts
+* Filter by category
+* Pagination
+* Dynamic metadata
+
+User Interaction
+
+* Like posts
+* Bookmark posts
+* Add comments
+* View comments
+
+Navigation
+
+* Breadcrumb navigation
+* Dynamic routing
+* Protected routes
+
+⸻
+
+⚙️ Installation
+
+Clone the repository:
+
+git clone https://github.com/pouyaoskuee/NextBlog-Client.git
+
+Install dependencies:
+
 npm install
+
+Run the development server:
+
 npm run dev
-```
 
-Create `.env.development.local`:
+Create .env.development.local:
 
-``` env
-VITE_BASE_URL=<your backend API>
-ex:http://localhost:9000
-```
+NEXT_PUBLIC_BASE_URL=<your backend API>
+# Example
+NEXT_PUBLIC_BASE_URL=http://localhost:8000/api
 
-Backend: https://github.com/pouyaoskuee/Freelancer-App-Server
+Backend:
 
-# 📸 Screenshots
+https://github.com/pouyaoskuee/NextBlog-Server
 
-## 🏠 Landing Page
+⸻
 
-| Desktop - Dark | Desktop - Light |
-| :------------: | :-------------: |
-| <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/dhomeDesktopDark.png" width="500"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/homeDesktopdLight0.png" width="500"> |
+📸 Screenshots
 
-| landing | footer | login | dashboard |
-| :----: | :----: | :----: | :----: |
-| <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/homeMdobileLight.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/homeMobileLidght2.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/loginMobildeLight.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/dashboardMobildeDark.PNG" width="260"> |
+🏠 Home Page
 
----
+Desktop - Dark	Desktop - Light
+	
+Mobile	Blog Posts	Post Details	Dashboard
+			
 
-## 📑 Project Management
+⸻
 
-| Dark | Light |
-| :--: | :---: |
-| <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/projectsDesdktopDark.png" width="500"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/projectsDesktopLidght2.png" width="500"> |
+📑 Blog & Post Details
 
+Dark	Light
+	
 
+⸻
 
-## 💡 Future Improvements
+💬 User Interaction
 
--   Unit Testing
--   End-to-End Testing
--   darkMode
+Comments	Likes & Bookmarks
+	
 
-## 📄 License
+⸻
+
+💡 Future Improvements
+
+* Unit Testing
+* End-to-End Testing
+* Performance Optimization
+* Accessibility Improvements
+
+⸻
+
+📄 License
 
 This project is intended for educational and portfolio purposes.

@@ -13,10 +13,9 @@ async function page({searchParams}) {
 
 
     return (
-        <div>
-            <h2 className={'mb-4'}>لیست پست ها</h2>
+        <>
                 <PostsList posts={posts} />
-        </div>
+        </>
     );
 }
 

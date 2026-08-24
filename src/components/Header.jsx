@@ -7,8 +7,8 @@ import Link from "next/link";
 function Header() {
     const {user , isLoading} =  useAuth()
     return (
-        <header className={'flex justify-between shadow-lg shadow-secondary-100 p-4 mb-10'}>
-            <ul className={'flex gap-6 container'}>
+        <header className={'flex justify-between shadow-lg shadow-secondary-100 px-6 py-4 mb-10'}>
+            <ul className={'flex gap-4 container'}>
                 <li><CustomLink href={'/'}>خانه</CustomLink></li>
                 <li><CustomLink href={'/blogs'}>بلاگ ها</CustomLink></li>
             </ul>

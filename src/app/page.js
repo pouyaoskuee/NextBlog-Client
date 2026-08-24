@@ -19,10 +19,9 @@ export default function Home() {
                     <p>بتونی بلاگ بسازی ـ کامنت بزاری و در پلنت همه اتفاق هارو رصد کنی!</p>
                 </div>
                 <div className={'flex gap-4'}>
-                    <Link href={'(blog)/blogs'}><Button variant={'outline'}>مطالعه بلاگ ها</Button></Link>
-                    <Button variant={'primary'}>مدریت بلاگ ها</Button>
+                    <Link href={'/blogs'}><Button variant={'outline'}>مطالعه بلاگ ها</Button></Link>
+                    <Link href={'/profile'}><Button variant={'primary'}>مدریت بلاگ ها</Button></Link>
                 </div>
-
             </main>
         </div>
     )

@@ -25,7 +25,7 @@ export default function Search() {
 
 
   return (
-    <form onSubmit={onSubmit} className="relative flex-1 ">
+    <form onSubmit={onSubmit} className="relative flex-1  ">
       <input
         key={searchParams?.get("search")}
         type="text"
@@ -33,7 +33,7 @@ export default function Search() {
         placeholder="جستجو ..."
         autoComplete="off"
         defaultValue={searchParams?.get("search") || ""}
-        className="textField__input py-3 text-xs"
+        className="textField__input py-3 text-xs shadow-xs"
       />
       <button
         type="submit"

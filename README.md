@@ -1,7 +1,7 @@
 NextBlog — Full-Stack Blog Platform
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextBlog/homeDesktdopLight.png" width="100%">
+  <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/home.png" width="100%">
 </p>
 <p align="center">
   A modern full-stack blog platform built with Next.js, featuring secure authentication, dynamic content rendering, user interactions, and optimized data fetching.
@@ -343,9 +343,9 @@ https://github.com/pouyaoskuee/NextBlog-Server
 ---
 
 
-| posts | login |
+| createpost | login |
 | :--: | :---: |
-| <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/adminposts.png" width="500"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/login.png" width="500"> |
+| <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/createpost.png" width="500"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/login.png" width="500"> |
 
 ⸻
 

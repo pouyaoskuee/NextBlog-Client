@@ -116,6 +116,7 @@ https://github.com/pouyaoskuee/NextBlog-Server
 
 NextBlog uses JWT-based authentication with Access and Refresh Tokens.
 
+```
 User
  │
  ▼
@@ -139,6 +140,7 @@ Next.js Middleware
  │
  ▼
 Authenticated Application
+```
 
 When the Access Token expires, the Refresh Token is used to maintain the user’s authenticated session.
 
@@ -185,7 +187,7 @@ Metadata API	Dynamic SEO metadata
 📂 Project Structure
 
 The project follows a feature-oriented App Router structure with reusable UI components and separated data-access logic.
-
+```
 src/
 ├── app/
 │   ├── (auth)/
@@ -244,6 +246,7 @@ src/
 ├── constants/
 ├── styles/
 └── middleware.js
+```
 
 The architecture separates:
 

@@ -1,4 +1,4 @@
-# Deadlancer - Freelancing Platform
+# NextBlog - Blog Platform
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/homeDesktdopLight.png" width="100%">

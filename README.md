@@ -335,10 +335,11 @@ https://github.com/pouyaoskuee/NextBlog-Server
 | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/dashboard.png" width="500"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/posts.png" width="500"> |
 
 ---
+📱 Mobile
 
 | landing | login | dashboard | adminPosts |
 | :----: | :----: | :----: | :----: |
-| <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/homeMobile.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/loginMobile.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/dashboardMobile.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/postsMobile.PNG" width="260"> |
+| <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/homeMobile.png" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/loginMobile.png" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/dashboardMobile.png" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/nextblog/postsMobile.png" width="260"> |
 
 ---
 

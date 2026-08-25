@@ -8,7 +8,7 @@ export const metadata= {
 
 function Layout({children}) {
     return (
-        <main className={'relative flex min-h-screen items-center justify-center overflow-hidden bg-secondary-50 px-5 py-10'}>
+        <main className={'relative flex h-dvh items-center justify-center overflow-hidden bg-secondary-50 px-5 py-10'}>
             <div className={'absolute -right-24 -top-20 size-72 rounded-full bg-primary-200/60 blur-3xl'} />
             <div className={'absolute -bottom-28 -left-20 size-80 rounded-full bg-primary-100/80 blur-3xl'} />
             <div className={'relative w-full max-w-md'}>

@@ -65,7 +65,7 @@ Next.js Features
 * Middleware
 * Streaming
 * Suspense
-* Loading UI
+* SpinnerLoading UI
 * Error Boundaries
 * Dynamic Metadata
 
@@ -159,7 +159,7 @@ Key aspects include:
 * Authentication headers
 * Request & response handling
 * Error handling
-* Loading states
+* SpinnerLoading states
 * FormData support for file uploads
 
 ⸻
@@ -178,7 +178,7 @@ Data Cache	Optimized server-side data fetching
 Revalidation	Keeping cached content up to date
 Streaming	Progressive page rendering
 Suspense	Async UI boundaries
-Loading UI	Navigation and data loading states
+SpinnerLoading UI	Navigation and data loading states
 Error Boundaries	Route-level error handling
 Metadata API	Dynamic SEO metadata
 

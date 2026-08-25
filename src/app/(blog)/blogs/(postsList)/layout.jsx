@@ -1,6 +1,6 @@
 import CategoryList from "@/app/(blog)/blogs/_components/CategoryList";
 import {Suspense} from "react";
-import Loading from "@/app/(blog)/blogs/(postsList)/loading";
+import SpinnerLoading from "@/app/(blog)/blogs/(postsList)/SpinnerLoading";
 import Search from "@/ui/Search";
 
 export const metadata = {
@@ -18,7 +18,7 @@ function Layout({children}) {
                         <p className={'mt-3 text-sm leading-7 text-secondary-600'}>میان نوشته‌ها جست‌وجو کنید یا از دسته‌بندی‌ها شروع کنید.</p>
                     </div>
                     <div className={'w-full lg:max-w-md'}>
-                        <Suspense fallback={<Loading/>}>
+                        <Suspense fallback={<SpinnerLoading/>}>
                             <Search />
                         </Suspense>
                     </div>
@@ -30,7 +30,7 @@ function Layout({children}) {
                         <h2 className={'text-lg'}>دسته‌بندی‌ها</h2>
                         <p className={'mt-1 text-xs text-secondary-500'}>موضوع مورد علاقه‌تان را انتخاب کنید.</p>
                     </div>
-                    <Suspense fallback={<Loading/>} ><CategoryList/></Suspense>
+                    <Suspense fallback={<SpinnerLoading/>} ><CategoryList/></Suspense>
                 </aside>
                 <section className={'min-w-0'}>
                     <div className={'mb-6 flex items-center justify-between'}>

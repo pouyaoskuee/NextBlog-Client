@@ -336,9 +336,9 @@ https://github.com/pouyaoskuee/NextBlog-Server
 
 ---
 
-| landing | footer | login | dashboard |
+| landing | login | dashboard | adminPosts |
 | :----: | :----: | :----: | :----: |
-| <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/homeMobidleLight.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/homeModbileLight2.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/loginMdobileLight.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/dashbodardMobileDark.PNG" width="260"> |
+| <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/homeMobile.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/loginMobile.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/dashboardMobile.PNG" width="260"> | <img src="https://raw.githubusercontent.com/pouyaoskuee/portfolio-asset/main/deadlancer/postsMobile.PNG" width="260"> |
 
 ---
 

@@ -8,15 +8,16 @@ export default function ProfileLayout({ children }) {
     const [isOpenDrawer, setIsOpenDrawer] = useState(false);
 
   return (
-    <div className="bg-secondary-0">
-      <div className="grid grid-cols-12 h-screen">
-        <aside className={`col-span-5 lg:col-span-3 xl:col-span-2 hidden lg:block ${isOpenDrawer && '!block ' }`}>
-          <SideBar setIsOpenDrawer={setIsOpenDrawer}  />
+    <div className="  bg-secondary-100">
+      <div className="mx-auto flex h-screen max-w-[1600px]">
+        {isOpenDrawer && <button aria-label="بستن منو" className="fixed inset-0 z-30 bg-secondary-900/30 lg:hidden" onClick={() => setIsOpenDrawer(false)} />}
+        <aside className={`fixed inset-y-0 right-0 z-40 w-72 border-l border-secondary-200 bg-secondary-0 transition-transform duration-300 lg:static lg:w-64 lg:translate-x-0 ${isOpenDrawer ? 'translate-x-0' : 'translate-x-full'}`}>
+          <SideBar setIsOpenDrawer={setIsOpenDrawer} />
         </aside>
-        <div className={`col-span-12 lg:col-span-9 xl:col-span-10  h-screen flex flex-col ${isOpenDrawer && '!col-span-7 ' }`}>
+        <div className="flex min-w-0 flex-1 flex-col">
           <Header setIsOpenDrawer={setIsOpenDrawer} isOpenDrawer={isOpenDrawer} />
-          <main className="bg-secondary-100 rounded-tr-3xl p-4 md:p-6 lg:p-10 flex-1 overflow-y-auto">
-            <div className="xl:max-w-screen-xl">{children}</div>
+          <main className="flex-1 overflow-auto  p-4 md:p-6 lg:p-8">
+            <div className="mx-auto  max-w-7xl">{children}</div>
           </main>
         </div>
       </div>

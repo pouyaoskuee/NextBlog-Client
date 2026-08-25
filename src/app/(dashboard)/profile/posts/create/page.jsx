@@ -4,7 +4,7 @@ import CreatePostForm from "@/app/(dashboard)/profile/posts/create/_/components/
 function createPost() {
 
     return (
-        <div>
+        <div className={'mx-auto max-w-3xl'}>
             <Breadcrumbs breadcrumbs={[
                 {
                     label:'پست ها',

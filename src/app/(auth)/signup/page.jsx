@@ -6,10 +6,9 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import Button from "@/ui/Button";
 import {useRouter} from "next/navigation";
 import {useAuth} from "@/context/authContext";
+import {UserPlusIcon} from "@heroicons/react/24/outline";
 
-// export const metadata= {
-//     title:'ثبت نام'
-// }
+
 
 function Page() {
     const router = useRouter();
@@ -35,14 +34,19 @@ function Page() {
     }
 
     return (
-        <div className={'mx-auto w-md space-y-6'}>
-            <h2>ثبت نام</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className={'space-y-4'}>
+        <section className={'rounded-3xl border border-secondary-200 bg-secondary-0 p-6 shadow-xl shadow-primary-100/50 sm:p-8'}>
+            <div className={'mb-7'}>
+                <span className={'mb-4 flex size-11 items-center justify-center rounded-xl bg-primary-50 text-primary-900'}><UserPlusIcon className={'size-5'} /></span>
+                <h1 className={'text-secondary-900'}>حساب جدید بسازید</h1>
+                <p className={'mt-3 text-sm leading-7 text-secondary-500'}>چند قدم تا شروع نوشتن و مدیریت بلاگ خودتان فاصله دارید.</p>
+            </div>
+            <form onSubmit={handleSubmit(onSubmit)} className={'space-y-5'}>
                 <RHFTextField
                     name={'fullName'}
                     label={'نام و نام خانوادگی'}
                     register={register}
                     errors={errors}
+                    isRequired
                 />
                 <RHFTextField
                     name={'email'}
@@ -50,22 +54,24 @@ function Page() {
                     register={register}
                     errors={errors}
                     type={'email'}
+                    dir={'ltr'}
+                    isRequired
                 />
                 <RHFTextField
                     name={'password'}
-                    label={'password'}
+                    label={'رمز عبور'}
                     register={register}
                     errors={errors}
                     type={'password'}
+                    dir={'ltr'}
+                    isRequired
                 />
-                <Button className={'w-full'} variant={'primary'} onClick={handleSubmit(onSubmit)}>
+                <Button className={'w-full py-3'} variant={'primary'} onClick={handleSubmit(onSubmit)}>
                     ثبت نام
                 </Button>
-                <Button className={'w-full'} type={'button'} variant={'secondary'} onClick={()=>router.push('/signin')}>
-                    ورود
-                </Button>
+                <p className={'pt-1 text-center text-sm text-secondary-500'}>حساب دارید؟ <button type={'button'} onClick={()=>router.push('/signin')} className={'font-bold text-primary-900 hover:text-primary-700'}>وارد شوید</button></p>
             </form>
-        </div>
+        </section>
     );
 }
 

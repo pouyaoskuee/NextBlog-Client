@@ -11,9 +11,8 @@ import Image from "next/image";
 import ButtonIcon from "@/ui/ButtonIcon";
 import {XMarkIcon} from "@heroicons/react/24/outline";
 import FileInput from "@/ui/FileInput";
-import {log} from "next/dist/server/typescript/utils";
 import {useCreatePost} from "@/app/(dashboard)/profile/posts/create/_/hooks/useCreatePost";
-import {useParams, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {useEditPost} from "@/app/(dashboard)/profile/posts/create/_/hooks/useEditPost";
 import {imageUrlToFile} from "@/utils/fileFormatter";
 
@@ -46,8 +45,8 @@ function CreatePostForm({post}) {
     const [coverImage, setCoverImage] = useState(prevCoverImageUrl || null)
     const router = useRouter()
     const {submitPost , isLoadingPost} = useCreatePost()
-    const {submitEdit , isLoadingEdit} = useEditPost()
-    const {categories , isLoading} = useCategories()
+    const {submitEdit, isLoadingEdit} = useEditPost()
+    const {categories} = useCategories()
     const schema = yup
         .object({
             title: yup
@@ -73,7 +72,7 @@ function CreatePostForm({post}) {
         })
         .required();
 
-    const {handleSubmit  , formState:{errors} , register , reset , control , setValue} = useForm({
+    const {handleSubmit  , formState:{errors} , register  , control , setValue} = useForm({
         mode: 'all',
         resolver: yupResolver(schema),
         defaultValues: editValue,
@@ -106,17 +105,21 @@ function CreatePostForm({post}) {
     useEffect(() => {
         if (isEditSession){
             async function fetchData() {
-               const file = await imageUrlToFile(coverImage)
+               const file = await imageUrlToFile(prevCoverImageUrl)
                 setValue('coverImage', file)
             }
 
             fetchData()
         }
-    }, [post]);
+    }, [isEditSession, prevCoverImageUrl, setValue]);
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={'space-y-4'}>
+        <form onSubmit={handleSubmit(onSubmit)} className={'space-y-5 rounded-2xl border border-secondary-200 bg-secondary-0 p-5 shadow-sm sm:p-7'}>
+            <div className={'border-b border-secondary-100 pb-5'}>
+                <h2 className={'text-xl'}>{isEditSession ? 'ویرایش پست' : 'ایجاد پست جدید'}</h2>
+                <p className={'mt-2 text-sm text-secondary-500'}>اطلاعات نوشته را با دقت وارد کنید؛ بعداً هم امکان ویرایش دارید.</p>
+            </div>
             <RHFTextField
                 name="title"
                 label={'عنوان'}
@@ -188,8 +191,10 @@ function CreatePostForm({post}) {
                 coverImage && (
                     <div className={'relative aspect-video overflow-hidden rounded-lg'}>
                         <ButtonIcon
+                            type={'button'}
                             variant={'red'}
-                            className={' size-8 z-10 absolute top-2 , left-2'}
+                            aria-label={'حذف تصویر کاور'}
+                            className={'size-8 absolute left-2 top-2 z-10'}
                             onClick={()=>{
                                 setCoverImage(null)
                                 setValue('coverImage' , null)
@@ -201,9 +206,11 @@ function CreatePostForm({post}) {
                 )
             }
 
-            <Button isLoading={isLoadingPost} variant={'primary'} type={'submit'}>
-                ایجاد پست
+            <div className={'flex justify-end border-t border-secondary-100 pt-5'}>
+            <Button isLoading={isLoadingPost || isLoadingEdit} variant={'primary'} type={'submit'} className={'min-w-32'}>
+                {isEditSession ? 'ذخیره تغییرات' : 'ایجاد پست'}
             </Button>
+            </div>
 
         </form>
     );

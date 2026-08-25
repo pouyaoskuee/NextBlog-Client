@@ -1,13 +1,15 @@
 import {
-  ChatBubbleBottomCenterIcon,
-  DocumentTextIcon,
-  RectangleGroupIcon,
-  Squares2X2Icon,
-  UsersIcon,
+    ArrowLeftStartOnRectangleIcon,
+    ChatBubbleBottomCenterIcon,
+    DocumentTextIcon,
+    RectangleGroupIcon,
+    Squares2X2Icon,
+    UsersIcon,
 } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import {useAuth} from "@/context/authContext";
 
 const sidebarNavs = [
   {
@@ -43,8 +45,16 @@ const sidebarNavs = [
   },
 ];
 
+
 export default function SideBarNavs() {
-  const router = useRouter();
+
+    const { logout } = useAuth();
+
+    const logoutHandler = async () => {
+        await logout;
+    };
+
+  const pathname = usePathname();
   return (
     <ul className="space-y-2">
       {sidebarNavs.map((nav) => {
@@ -53,10 +63,10 @@ export default function SideBarNavs() {
             <Link
               href={nav.href}
               className={classNames(
-                "flex items-center gap-x-2 rounded-2xl font-medium hover:text-primary-900 transition-all duration-200 text-secondary-700 py-3 px-4",
+                "flex items-center gap-x-3 rounded-xl px-4 py-3 text-sm font-medium text-secondary-600 transition-all duration-200 hover:bg-primary-50 hover:text-primary-900",
                 {
-                  "bg-primary-100/40 !font-bold text-primary-900":
-                    router.pathname === nav.href,
+                  "bg-primary-100 !font-bold text-primary-900 shadow-sm":
+                    pathname === nav.href || (nav.href !== '/profile' && pathname.startsWith(`${nav.href}/`)),
                 }
               )}
             >
@@ -66,6 +76,15 @@ export default function SideBarNavs() {
           </li>
         );
       })}
+        <li className={'block'}>
+            <button onClick={logoutHandler}
+                    className=" w-full flex items-center gap-x-3 rounded-xl px-4 py-3 text-sm font-medium text-secondary-600 transition-all duration-200 hover:bg-primary-50 hover:text-primary-900"
+            >
+                <ArrowLeftStartOnRectangleIcon className=" size-5" />
+                <span>خروج</span>
+            </button>
+
+        </li>
     </ul>
   );
 }

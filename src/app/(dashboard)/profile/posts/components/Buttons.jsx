@@ -14,8 +14,7 @@ export function CreatePostBtn() {
     return (
         <Link
             href="/profile/posts/create"
-            className="justify-self-end flex gap-x-4 py-3 items-center rounded-lg bg-primary-900 px-4 text-sm font-medium text-secondary-0
-      transition-colors hover:bg-primary-700"
+            className="flex shrink-0 items-center gap-x-2 rounded-xl bg-primary-900 px-4 py-3 text-sm font-medium text-secondary-0 shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-md"
         >
             <span className="hidden md:block">ایجاد پست</span>{" "}
             <PlusIcon className="w-5" />
@@ -26,11 +25,11 @@ export function CreatePostBtn() {
 export function DeletePost({post}) {
     const router =  useRouter()
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const {removePost , loadingRemovePost} = useRemovePost()
+    const {removePost} = useRemovePost()
 
     function handleRemove(e){
         e.preventDefault();
-        removePost(post.id , {
+        removePost(post._id , {
             onSuccess: () => {
                 setIsOpenModal(false);
                 router.refresh()
@@ -41,7 +40,7 @@ export function DeletePost({post}) {
 
     return (
         <>
-            <ButtonIcon variant={'outline'} onClick={()=>setIsOpenModal(true)} >
+            <ButtonIcon type={'button'} variant={'outline'} onClick={()=>setIsOpenModal(true)} aria-label={`حذف ${post.title}`} title={'حذف پست'} className={'size-8 hover:!border-red-300 hover:!text-red-500'}>
                 <TrashIcon />
             </ButtonIcon>
             <Modal
@@ -64,10 +63,10 @@ export function DeletePost({post}) {
 }
 
 
-export function UpdatePost ({id, post}) {
+export function UpdatePost ({id}) {
     return (
         <Link href={`/profile/posts/${id}/edit`}>
-            <ButtonIcon variant={'outline'} >
+            <ButtonIcon type={'button'} variant={'outline'} aria-label={'ویرایش پست'} title={'ویرایش پست'} className={'size-8 hover:!border-primary-300 hover:!text-primary-900'}>
                 <PencilIcon />
             </ButtonIcon>
         </Link>

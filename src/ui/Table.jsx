@@ -1,6 +1,6 @@
 function Table({ children }) {
   return (
-    <div className="bg-secondary-0 overflow-x-auto">
+    <div className="overflow-x-auto rounded-2xl border border-secondary-200 bg-secondary-0 shadow-sm">
       <table>{children}</table>
     </div>
   );

@@ -6,7 +6,7 @@ async function EditPostForm({params}) {
     const { postId } = await params;
     const {post} = await getPostByIdApi(postId)
     return (
-        <>
+        <div className={'mx-auto max-w-3xl'}>
             <Breadcrumbs breadcrumbs={[
                 {
                     label:'پست ها',
@@ -14,14 +14,14 @@ async function EditPostForm({params}) {
 
                 },
                 {
-                    label:'ایجاد پست جدید',
-                    href:'/profile/posts/edit',
+                    label:'ویرایش پست',
+                    href:`/profile/posts/${postId}/edit`,
                     active:true,
 
                 }
             ]} />
             <CreatePostForm post={post}/>
-        </>
+        </div>
     );
 }
 

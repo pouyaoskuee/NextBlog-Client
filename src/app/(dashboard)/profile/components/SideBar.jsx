@@ -1,42 +1,23 @@
 "use client";
-
-import { useAuth } from "@/context/authContext";
-import {
-    ArrowLeftStartOnRectangleIcon,
-    HomeIcon, XCircleIcon, XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { HomeIcon, XMarkIcon} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import SideBarNavs from "./SideBarNavs";
 
 function SideBar({setIsOpenDrawer})  {
-  const { logout } = useAuth();
 
-  const logoutHandler = async () => {
-    await logout;
-  };
 
   return (
-    <div className="overflow-y-auto flex flex-col p-5 h-screen pt-5 lg:pt-8">
-      {/* Drawer header */}
-        <XMarkIcon onClick={()=>setIsOpenDrawer(false)} className={'size-5 mb-5'}/>
+    <div className="flex flex-col overflow-y-auto p-5">
+        <button type="button" aria-label="بستن منو" onClick={()=>setIsOpenDrawer(false)} className={'mb-5 self-start rounded-lg p-1 hover:bg-secondary-100 lg:hidden'}><XMarkIcon className={'size-5'}/></button>
       <Link
-        href="/public"
-        className="flex items-center gap-x-4 justify-center text-secondary-700 border-b  border-b-secondary-200 
-        pb-2 mb-6"
+        href="/"
+        className="mb-7 flex items-center gap-x-3 border-b border-b-secondary-200 pb-5 text-lg font-black text-secondary-800"
       >
-        <HomeIcon className="w-6 h-6" />
-        <span> نکست بلاگ</span>
+        <span className="flex size-9 items-center justify-center rounded-xl bg-primary-900 text-secondary-0"><HomeIcon className="size-5" /></span>
+        <span>نکست بلاگ</span>
       </Link>
-      {/* Drawer content */}
-      <div className="overflow-y-auto flex-auto">
+      <div className="flex flex-1 flex-col">
         <SideBarNavs />
-        <div
-          onClick={logoutHandler}
-          className="flex items-center gap-x-2 rounded-2xl font-medium transition-all duration-200 text-secondary-700 py-3 px-4 hover:text-red-400 cursor-pointer"
-        >
-          <ArrowLeftStartOnRectangleIcon className="ml-4 h-5 w-5" />
-          <span>خروج</span>
-        </div>
       </div>
     </div>
   );

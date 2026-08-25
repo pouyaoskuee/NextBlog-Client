@@ -18,7 +18,9 @@ function Layout({children}) {
                         <p className={'mt-3 text-sm leading-7 text-secondary-600'}>میان نوشته‌ها جست‌وجو کنید یا از دسته‌بندی‌ها شروع کنید.</p>
                     </div>
                     <div className={'w-full lg:max-w-md'}>
-                        <Search />
+                        <Suspense fallback={<Loading/>}>
+                            <Search />
+                        </Suspense>
                     </div>
                 </div>
             </section>
